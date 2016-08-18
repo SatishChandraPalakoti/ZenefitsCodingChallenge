@@ -1,9 +1,10 @@
  function drawcharts(a,b,o) {
   var rate=a;
   var price=b;
+
+  // Adding the div ID for the variable appendchart_to
+
   var appendchart_to='pic'+o;
-  console.log("Printing to index "+appendchart_to);
-    // Uncomment to style it like Apple Watch
 
     if (!Highcharts.theme) {
         Highcharts.setOptions({
@@ -24,7 +25,7 @@
         });
     }
 
-
+// The variable is used by the highchart to push the resultant SVG of the graph into.
     Highcharts.chart(appendchart_to, {
 
         chart: {

@@ -1,5 +1,5 @@
 function aggregate(input) {
-
+// The div to which the results are added i.e the SVG of aggragated column chart results
     $('#aggregated_results').highcharts({
         chart: {
             type: 'column',

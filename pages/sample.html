@@ -2,42 +2,41 @@
 <html>
 <head>
   <title>Zenefits</title>
+  <!-- Refering to the custom Icon for the tab -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
-
+  <!-- Importing JQuery -->
   <script src="../javascript/jquery-3.1.0.min.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="../css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
   <!-- Optional theme -->
   <link rel="stylesheet" href="../css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
   <!-- Latest compiled and minified JavaScript -->
   <script src="../javascript/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
+  <!-- Importing Font-Awesome stylesheets -->
   <link rel="stylesheet" href="../css/font-awesome-4.6.3/css/font-awesome.min.css">
+  <!-- Importing Custom font from google-fonts -->
   <link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
-
+  <!-- Importing the minified version of the application css -->
   <link rel="stylesheet" href="../css/style.min.css">
-
+  <!-- Reference to the highchart libraries -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/highcharts-more.js"></script>
   <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 
 </head>
 <body class="container-fluid">
-
+  <!-- Navbar on the top of the page for the title -->
   <div class="row">
     <nav class="navbar">
-    <ul class="nav nav-justified">
-      <li id="title"><a href="#" class="brand">ZENEFITS CODING CHALLENGE</a></li>
-    </ul>
-
-
+      <ul class="nav nav-justified">
+        <li id="title"><a href="#" class="brand">ZENEFITS CODING CHALLENGE</a></li>
+      </ul>
     </nav>
   </div>
+
+  <!-- Icons and the sub title of the application-->
   <div class="row searchhold">
     <div class="col-md-12 col-sm-12 col-xs-18">
       <p class="searchtxta">LET'S  <span class="fa fa-binoculars"></span> PLACES ! </p>
@@ -56,58 +55,60 @@
   </div>
 
 
-
+  <!-- Search fields for searching the places -->
   <div class="row">
 
     <div class="col-xs-18 col-sm-12 col-md-12 searchtxtb" style="overflow-x:hidden">
       <form>
-      <span>I am looking for</span>
-      <div class="group" style="">
-        <input type="text" id="lookinput" required autocomplete="off">
-        <span class="highlight" ></span>
-        <span class="bar"></span>
-        <label>Places</label>
-      </div>
-      <span>located in</span>
-      <div class="group" style="">
-        <input type="text" id="myinput" required>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Location</label>
-      </div>
+        <span>I am looking for</span>
+        <div class="group" style="">
+          <input type="text" id="lookinput" required autocomplete="off">
+          <span class="highlight" ></span>
+          <span class="bar"></span>
+          <label>Places</label>
+        </div>
+        <span>located in</span>
+        <div class="group" style="">
+          <input type="text" id="myinput" required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Location</label>
+        </div>
       </form>
     </div>
+
+    <!-- Trigger of all the actions (Search button) -->
+
     <div class="col-md-8 col-md-offset-2 col-xs-11 col-sm-8 col-sm-offset-2">
       <button class="btn" id="giveme">FIND PLACES</button>
     </div>
 
   </div>
 
+
+  <!-- The div which holds the map responses from the google api -->
   <div class="row mapholder">
     <div id="map-canvas"></div>
   </div>
 
-
+ <!-- Div for holding the Carousel which contains the responsed from the google places library -->
   <div class="row">
-      <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-2">
-        <ul class="pagination" style="margin-left:35%;">
-          <li><a class="left" href="#myCarousel" role="button" data-slide="prev"><span class="fa fa-arrow-circle-left fa-2x"></span></a></li>
-          <li><a class="right" href="#myCarousel" role="button" data-slide="next"><span class="fa fa-arrow-circle-right fa-2x"></span></a></li>
-        </ul>
-      </div>
+    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-2">
+      <ul class="pagination" style="margin-left:35%;">
+        <li><a class="left" href="#myCarousel" role="button" data-slide="prev"><span class="fa fa-arrow-circle-left fa-2x"></span></a></li>
+        <li><a class="right" href="#myCarousel" role="button" data-slide="next"><span class="fa fa-arrow-circle-right fa-2x"></span></a></li>
+      </ul>
+    </div>
 
   </div>
 
-    <div id="myCarousel" class="carousel slide row"  data-ride="carousel" data-interval="false">
+  <div id="myCarousel" class="carousel slide row"  data-ride="carousel" data-interval="false">
 
-      <div class="carousel-inner col-md-12 col-sm-12 col-xs-18 " align="center" role="listbox" id="carcontent">
-
-     </div>
+    <div class="carousel-inner col-md-12 col-sm-12 col-xs-18 " align="center" role="listbox" id="carcontent">
 
     </div>
 
-
-
+  </div>
 
   <div class="container" id="aggregated_results">
     <div class="col-md-12">
@@ -116,9 +117,18 @@
   </div>
 
 </body>
+<!-- References to the javascript files scripted -->
+
+<!-- Refers the main file which calls the google maps api for the responses about the user's input -->
 <script async defer src="./javascript/maps.min.js"></script>
+
+<!-- Refers the javascript file that populates the solid gauge charts for the responses of user rating and price level -->
 <script async defer src="./javascript/charts.min.js"></script>
+
+<!-- Refers the javascript file that populates the column chart for the ratings to compare between the places -->
 <script async defer src="./javascript/aggregated.min.js"></script>
+
+<!-- Reference to the library (Google maps , places library) -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4_OL7MrTjz3gB_U_uTDITjLUH2SukDdU&callback=showmymap&libraries=places">
 </script>
 
