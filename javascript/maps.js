@@ -141,13 +141,19 @@ function createMarker(count,place) {
 
 function add_to_carousel(count,foundplace){
   var phone=typeof(foundplace.formatted_phone_number)=="undefined"?"(N/A)":foundplace.formatted_phone_number;
+  var types=foundplace.types;
+  var typeres=" ";
+  types.forEach(function(type){
+    typeres+="<li>"+type.toUpperCase()+"</li>";
+  });
+
   if(count===0){
-    holderchild= "<div class='item active' style='width:100%;'><table><tr> <td colspan='3'> <h4>"+ foundplace.name.toUpperCase() +"</h4></td></tr><tr><td><img class='logos' src='"+foundplace.icon+"'></td><td colspan='2'><div id='pic"+count+"'></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h5>"+foundplace.formatted_address+"</h5></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h5>"+phone+"</h5></td></tr></table></div>";
+    holderchild= "<div class='item active' style='width:100%;'><table><tr> <td colspan='3'> <h2>"+ foundplace.name.toUpperCase() +"</h2></td></tr><tr><td class='logos'><img src='"+foundplace.icon+"'> <div>"+typeres+" </div></td><td colspan='2'><div id='pic"+count+"'></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h3>"+foundplace.formatted_address+"</h3></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h3>"+phone+"</h3></td></tr></table></div>";
 
 
   }
   else{
-    holderchild= "<div class='item'><table class=style='width:100%; '><tr> <td colspan='3'> <h4>"+ foundplace.name.toUpperCase() +"</h4></td></tr><tr><td><img class='logos' src='"+foundplace.icon+"'></td><td colspan='2'><div id='pic"+count+"'></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h5>"+foundplace.formatted_address+"</h5></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h5>"+phone+"</h5></td></tr></table></div>";
+    holderchild= "<div class='item'><table class=style='width:100%; '><tr> <td colspan='3'> <h2>"+ foundplace.name.toUpperCase() +"</h2></td></tr><tr><td class='logos'><img src='"+foundplace.icon+"'><div>"+typeres+" </div> </td><td colspan='2'><div id='pic"+count+"'></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h3>"+foundplace.formatted_address+"</h3></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h3>"+phone+"</h3></td></tr></table></div>";
 
   }
 
