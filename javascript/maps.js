@@ -34,9 +34,7 @@ function _navigate(){
 
 
   mybutton.onclick=function() {
-    $('html, body').animate({
-      scrollTop: $("#map-canvas").offset().top
-    }, 2000);
+
 
     // console.clear();
     markers.forEach(function(marker) {
@@ -53,13 +51,15 @@ function _navigate(){
     }
 
     else {
-      alert("What are you looking for ?");
+      alert("Oops! Looks like you haven't keyed in the place/Location you are searching for/in");
       return;
     }
   };
 }
 
 function initialize(_destination,_placetype){
+
+
   map.setCenter(_destination);
   infowindow = new google.maps.InfoWindow();
   var service=new google.maps.places.PlacesService(map);
@@ -74,6 +74,9 @@ function initialize(_destination,_placetype){
 
 function callback(results,status) {
   //remove the spinner here
+  $('html, body').animate({
+    scrollTop: $("#map-canvas").offset().top
+  }, 2000);
   if(status===google.maps.places.PlacesServiceStatus.OK) {
     document.getElementById("carcontent").innerHTML="";
     var rating_aggreg_param=[];
@@ -146,14 +149,16 @@ function add_to_carousel(count,foundplace){
   types.forEach(function(type){
     typeres+="<li>"+type.toUpperCase()+"</li>";
   });
+  var mobile_rating=typeof(foundplace.rating)!=="undefined"?foundplace.rating:"Not Available";
+  var mobile_price=typeof(foundplace.min_price_level)==="undefined"?"Not Available":foundplace.min_price_level;
 
   if(count===0){
-    holderchild= "<div class='item active' style='width:100%;'><table><tr> <td colspan='3'> <h2>"+ foundplace.name.toUpperCase() +"</h2></td></tr><tr><td class='logos'><img src='"+foundplace.icon+"'> <div>"+typeres+" </div></td><td colspan='2'><div id='pic"+count+"'></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h3>"+foundplace.formatted_address+"</h3></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h3>"+phone+"</h3></td></tr></table></div>";
+    holderchild= "<div class='item active' style='width:100%;'><table><tr> <td colspan='3'> <h2>"+ foundplace.name.toUpperCase() +"</h2></td></tr><tr><td class='logos'><img src='"+foundplace.icon+"'> <div>"+typeres+" </div></td><td colspan='2'><div class='picd' id='pic"+count+"'></div><div class='picm'><li> <h3>Rated : "+mobile_rating+"</h3></li><li> <h3> Min. Price: "+mobile_price+" </h3></li></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h3>"+foundplace.formatted_address+"</h3></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h3>"+phone+"</h3></td></tr></table></div>";
 
 
   }
   else{
-    holderchild= "<div class='item'><table class=style='width:100%; '><tr> <td colspan='3'> <h2>"+ foundplace.name.toUpperCase() +"</h2></td></tr><tr><td class='logos'><img src='"+foundplace.icon+"'><div>"+typeres+" </div> </td><td colspan='2'><div id='pic"+count+"'></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h3>"+foundplace.formatted_address+"</h3></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h3>"+phone+"</h3></td></tr></table></div>";
+    holderchild= "<div class='item' style='width:100%;'><table><tr> <td colspan='3'> <h2>"+ foundplace.name.toUpperCase() +"</h2></td></tr><tr><td class='logos'><img src='"+foundplace.icon+"'> <div>"+typeres+" </div></td><td colspan='2'><div class='picd' id='pic"+count+"'></div><div class='picm'><li> <h3>Rated : "+mobile_rating+"</h3></li><li> <h3> Min. Price: "+mobile_price+" </h3></li></div></td></tr><tr> <td><span class='fa fa-map-marker fa-2x'></span></td><td colspan='2'> <h3>"+foundplace.formatted_address+"</h3></td></tr><tr> <td><span class='fa fa-phone-square fa-2x'></span></td><td colspan='2'> <h3>"+phone+"</h3></td></tr></table></div>";
 
   }
 
