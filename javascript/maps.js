@@ -114,7 +114,7 @@ function createMarker(count,place) {
     position: place.geometry.location,
     animation: google.maps.Animation.DROP,
     locindex:count,
-    icon:"http://127.0.0.1:8080/pages/img/zicon.png"
+    icon:"/pages/img/zicon.png"
   });
 
   if(count===0)
