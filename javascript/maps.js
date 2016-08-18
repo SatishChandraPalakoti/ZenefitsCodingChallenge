@@ -113,8 +113,8 @@ function createMarker(count,place) {
     map: map,
     position: place.geometry.location,
     animation: google.maps.Animation.DROP,
-    locindex:count
-    // icon:"http://localhost:8080/pages/img/zicon.png"
+    locindex:count,
+    icon:"http://127.0.0.1:8080/pages/img/zicon.png"
   });
 
   if(count===0)
@@ -129,7 +129,7 @@ function createMarker(count,place) {
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
-    infowindow.open(map, this); 
+    infowindow.open(map, this);
    markers.forEach(function(marker){
      marker.setAnimation(null);
    });
